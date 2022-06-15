@@ -4,9 +4,9 @@ Created for internal use at Donut Team and Rogue Crab, we decided it would benef
 ```xml
 <?xml version="1.0"?>
 <Localisation>
-	<String Name="my_string">Hello world!</String>
+  <String Name="my_string">Hello world!</String>
   <String Name="my_string_with_params">Hello <Parameter Name="Person" /></String>
-  <String Name="my_string_with_callbacks">Hello <Span Name="ProfileLink"><Parameter Name="Person" /></Span></String>
+  <String Name="my_string_with_callbacks">Hello <Span Name="Link"><Parameter Name="Person" /></Span></String>
   <List Name="my_string_list">
     <String>Hello world!</String>
     <String>This is an example!</String>
@@ -37,7 +37,7 @@ echo $Localisation->read(
   // Pitfall: Make sure to htmlentitize the callback of $e here, as the language localisation
   // system will not handle anything that isn't directly included to it.
   [
-    "ProfileLink" => (fn($e) => "<a href=\"https://google.com\">" . htmlentities($e) . "</a>")
+    "Link" => (fn($e) => "<a href=\"https://google.com\">" . htmlentities($e) . "</a>")
   ]
 );
 
