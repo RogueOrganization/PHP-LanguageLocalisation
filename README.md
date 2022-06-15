@@ -52,6 +52,15 @@ There are a few notes to keep in mind when using this Localisation system.
 ## `Span`s do not auto `htmlentities` ever.
 Period. You will need to handle all `htmlentities` on any content the developer provides through the use of a `Span` element. A `Span`'s primary incentive is for the developer to wrap links or text stylisation around the text provided from the localisation system.
 
+Any text using the provided variable is html entitized.
+
+For example:
+```xml
+<String Name="Test"><Span Name="my_span">David &amp; Sophia are <Parameter Name="Activity" /></Span></String>
+```
+
+"David & Sophia are " will be automatically entitized, however any content supplied using the `Span` and the `Parameter` will not be. If you are using `EntitizeByDefault` or the `Parameter` "Activity" is marked to auto-entitize, you will run into issues where the `Parameter` will be doubly encoded if your `Span`'s callback encoded the entire bit. Be careful.
+
 ## `Parameter`s do not auto `htmlentities` by default.
 You should entitize all Parameters supplied to the localisation system. This is done to allow the developer freedom to handle entitization as needed. However, you can force the system entitize Parameters by default.
 
