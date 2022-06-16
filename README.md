@@ -5,8 +5,8 @@ Created for internal use at Donut Team and Rogue Crab, we decided it would benef
 <?xml version="1.0"?>
 <Localisation>
   <String Name="my_string">Hello world!</String>
-  <String Name="my_string_with_params">Hello <Parameter Name="Person" Entitize="true" /></String>
-  <String Name="my_string_with_callbacks">Hello <Span Name="Link"><Parameter Name="Person" /></Span></String>
+  <String Name="my_string_params">Hello <Parameter Name="Person" Entitize="true" /></String>
+  <String Name="my_string_spans">Hello <Span Name="Link"><Parameter Name="Person" /></Span></String>
   <List Name="my_string_list">
     <String>Hello world!</String>
     <String>This is an example!</String>
@@ -22,14 +22,14 @@ $Localisation = new \LanguageLocalisation\LanguageLocalisation("/path/to/localis
 echo $Localisation->read("my_string");
 
 // echos "Hello Dave"
-echo $Localisation->read("my_string_with_params", [
+echo $Localisation->read("my_string_params", [
   "Person" => "Dave"
 ]);
 
 // echos "Hello <a href="https://google.com">Dave</a>"
 
 echo $Localisation->read(
-  "my_string_with_callbacks",
+  "my_string_spans",
   [
     "Person" => "Dave"
   ],
