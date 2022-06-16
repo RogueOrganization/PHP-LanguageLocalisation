@@ -64,7 +64,12 @@ For example:
 ## `Parameter`s do not auto `htmlentities` by default.
 You should entitize all Parameters supplied to the localisation system. This is done to allow the developer freedom to handle entitization as needed. However, you can force the system entitize Parameters by default.
 
-Add `EntitizeByDefault` to the root of your Meta.xml file.
+You can call this function to entitize all Parameters by default:
+```php
+$Localisation->SetParamEntitiesMode(bool $Mode = false);
+```
+
+Or, alternatively add `EntitizeByDefault` to the root of your Meta.xml file.
 ```xml
 <?xml version="1.0"?>
 <Translations DefaultLanguage="en" EntitizeByDefault="true">
@@ -77,6 +82,38 @@ You can also add this on a per `Parameter` basis:
   <!-- Parameter "Person" will be entitized. -->
   <String Name="Test">Hello <Parameter Name="Person" Entitize="true" />!</String>
 ```
+
+# Constructor Options
+LanguageLocalisation takes the following constructor arguments:
+
+```php
+new LanguageLocalisation\LanguageLocalisation(string $Path, string $SetLanguage = null, bool $Debug = false);
+```
+
+## string $Path
+- Required
+
+The path to your localisation files. At the root of this directory, ensure you have a "Meta.xml" file ready to parse.
+
+## string $SetLanguage = null
+- Defaults to null
+
+Used to assign locale by script instead of the class automatically picking the best locale for the browser. Helpful for things such as WebSockets or accounts setting their own perferred language.
+
+## bool $Debug = false
+- Defaults to false
+
+This can be used for debugging. Alternatively, you can call `SetDebugMode`. However this has the pitfall of not allowing certain things at start up as debug mode has not yet been enabled.
+
+```php
+$Localisation->SetDebugMode(bool $Mode);
+```
+
+# Cookies
+LanguageLocalisation uses cookies that can be set to adjust settings on a per browser basis.
+
+## `LLSetting_Lang`
+Can be used to set the language forcefully using a cookie (i.e. setting this value to "es" will result in the website returning Spanish text)
 
 # Installation
 TODO
