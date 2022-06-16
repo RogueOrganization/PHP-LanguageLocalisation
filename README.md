@@ -6,7 +6,7 @@ Created for internal use at Donut Team and Rogue Crab, we decided it would benef
 <Localisation>
   <String Name="my_string">Hello world!</String>
   <String Name="my_string_params">Hello <Parameter Name="Person" Entitize="true" /></String>
-  <String Name="my_string_spans">Hello <Span Name="Link"><Parameter Name="Person" /></Span></String>
+  <String Name="my_string_spans">Hello <Span Name="Link"><Param Name="Person" /></Span></String>
   <List Name="my_string_list">
     <String>Hello world!</String>
     <String>This is an example!</String>
