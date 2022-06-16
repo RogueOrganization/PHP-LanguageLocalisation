@@ -27,7 +27,6 @@ echo $Localisation->read("my_string_params", [
 ]);
 
 // echos "Hello <a href="https://google.com">Dave</a>"
-
 echo $Localisation->read(
   "my_string_spans",
   [
