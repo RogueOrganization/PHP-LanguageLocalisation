@@ -48,7 +48,7 @@ foreach ($Localisation->readList("my_string") as $String)
 # Pitfalls
 There are a few notes to keep in mind when using this Localisation system. 
 
-## `Span`s do not auto `htmlentities` ever.
+## Content supplied by PHP for `Span`s do not auto `htmlentities` ever.
 Period. You will need to handle all `htmlentities` on any content the developer provides through the use of a `Span` element. A `Span`'s primary incentive is for the developer to wrap links or text stylisation around the text provided from the localisation system.
 
 Any text using the provided variable is html entitized.
