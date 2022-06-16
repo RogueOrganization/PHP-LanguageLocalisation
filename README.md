@@ -109,6 +109,44 @@ This can be used for debugging. Alternatively, you can call `SetDebugMode`. Howe
 $Localisation->SetDebugMode(bool $Mode);
 ```
 
+# Language XML files
+All language files are structured similarly:
+
+```xml
+<?xml version="1.0"?>
+<!-- A root "Localisation" node. -->
+<!-- You can inherit another locale by using the "Inherits" attribute. -->
+<!-- Inheriting is useful when dealing with incomplete languages or variants -->
+<Localisation Inherits="en">
+    <!-- A "String" element is used for storing text. -->
+    <!-- String elements have a "Name" attribute for lookup in your code -->
+    <!-- The body of a "String" element is simply text -->
+    <String Name="global_navbar_blog">Publicaciones</String>
+    
+    <!-- "Parameter" or "Param" elements are used for content supplied by the code -->
+    <!-- "Parameter" or "Param" elements use a name for mapping information from code -->
+    <String Name="global_navbar_search">Search for <Parameter Name="Thing" /></String>
+
+    <!-- "String" elements can be referenced by other "String" elements like so: -->
+    <String Name="search_blog">Search <String Name="global_navbar_blog" /></String>
+    
+    <!-- You can wrap HTML content around localisation by using "Span" elements -->
+    <!-- Span elements contain a Name for mapping a callback in code -->
+    <String Name="terms">By clicking submit you agree to the <Span Name="Link">Terms &amp; Conditions</Span></String>
+    
+    <!-- The "List" element is used for strings that are grouped together -->
+    <!-- "List" elements have a "Name" attribute for looking up in your code -->
+    <List Name="AboutPage_About">
+        <!-- "String" elements are stored within the "List" element -->
+        <!-- "String" elements in a "List" do not need a name for lookup -->
+        <String>My String 1</String>
+        <String>My String 2</String>
+        <!-- "String" elements in a "List" can make use of Parameters and Spans -->
+        <String>My String <Param Name="Number" /></String>
+    </List>
+</Localisation>
+```
+
 # Cookies
 LanguageLocalisation uses cookies that can be set to adjust settings on a per browser basis.
 
